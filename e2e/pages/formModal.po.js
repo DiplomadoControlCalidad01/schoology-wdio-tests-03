@@ -4,8 +4,6 @@ class Form {
 
     constructor() {
         this.saveButton = '#edit-submit';
-
-        CommonActions.waitForVisible('#s-group-create-new-form');
     }
 
     clickSaveButton() {

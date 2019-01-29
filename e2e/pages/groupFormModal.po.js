@@ -10,6 +10,7 @@ class GroupForm extends Form {
         this.descriptionTextField = '#edit-description';
         this.privacidadSelect = '#edit-privacy-level';
         this.accesoSelect = '#edit-invite-type';
+        this.codigoJoin = '#edit-invite-code';
     }
 
     fillForm(groupJson) {
@@ -24,5 +25,15 @@ class GroupForm extends Form {
         });
     }
 
+    fillJoin(joinJson) {
+        let joinSteps = {
+            'Codigo': () => CommonActions.setValue(this.codigoJoin, joinJson.Codigo),
+        };
+        Object.keys(joinJson).forEach(key => {
+            joinSteps[key].call();
+        });
+    }
+
 }
-module.exports =GroupForm;
+
+module.exports = GroupForm;
