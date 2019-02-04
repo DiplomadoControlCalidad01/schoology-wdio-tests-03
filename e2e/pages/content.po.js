@@ -5,28 +5,44 @@ class Content {
     constructor() {
         this.newButton = 'a[href="/groups/new"';
         this.newButtonJoin = 'a[href="/enroll/group"';
-        this.newButtonModify = 'a[href="/group/1923602210"';
-        this.newButtonOption = '//span[contains(text(),"Opciones del grupo")]/parent::div';
-        this.newButtonEditInf = 'a[href="/group/1923602210/edit"]';
+        this.newButtonEditInf = '.action-links-unfold.active + ul a.action-edit';
+        this.buttonMisGrupos = 'a[href="/groups"]';
+        this.buttonDelete= '.action-links-unfold.active + ul .action-delete';
+        this.linkArchiveGroup = '.action-links-unfold.active + ul .action-archive';
+
+    }
+
+    clickLinkArchiveG() {
+        CommonActions.click(this.linkArchiveGroup);
     }
 
     clickNewButton() {
         CommonActions.click(this.newButton);
     }
 
+    clickButtonDelete() {
+        CommonActions.click(this.buttonDelete);
+    }
+
+    clickMisGrupos() {
+        CommonActions.click(this.buttonMisGrupos);
+    }
+
     clickNewButtonJoin() {
         CommonActions.click(this.newButtonJoin);
     }
 
-    clickNewButtonModify() {
-        CommonActions.click(this.newButtonModify);
-    }
-    clickNewButtonOption() {
-        CommonActions.click(this.newButtonOption);
-    }
-    clickNewButtonEdit() {
+    clickNewButtonEdit2() {
         CommonActions.click(this.newButtonEditInf);
     }
+    clickNewButtonEdit1(group) {
+        CommonActions.click(`//a[text()="${group}"]/ancestor::li/descendant::div[contains(@class, "action-links-unfold")]`);
+    }
+
+    clickLinkGroup(nameGroup) {
+        CommonActions.click(`//a[text()="${nameGroup}"]/ancestor::li/div[contains(@class,"middle")]/a`);
+    }
+
 }
 
 module.exports = Content;

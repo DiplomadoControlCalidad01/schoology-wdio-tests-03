@@ -1,19 +1,26 @@
-
-const credentials = require ('../../environment').credentials;
-const CommonActions = require('../core/CommonActions');
+const expect = require('chai').expect;
+const {credentials} = require('../../environment');
 const Login = require('../pages/login.po');
 const GroupForm = require('../pages/groupFormModal.po');
+const GroupView = require('../pages/groupView.po');
 
 
 
-describe('Login to Schoology', () => {
-    it('Login', () => {
+describe('Group Feature', () => {
 
-        let header = Login.loginAs(credentials.sysadmin.username,credentials.sysadmin.password);
 
-        CommonActions.click('a[href="javascript://"]');
+    let header;
+
+    beforeEach(() => {
+        header = Login.loginAs(credentials.sysadmin.username,
+            credentials.sysadmin.password);
+    });
+
+    it('#BVT Create Group', () => {
+
         let appLauncherModal = header.clickAppLauncherButton();
         let content = appLauncherModal.openButton();
+
         content.clickNewButton();
 
         let groupForm = new GroupForm();
@@ -26,6 +33,10 @@ describe('Login to Schoology', () => {
         groupForm.fillForm(group);
         groupForm.clickSaveButton();
 
-        browser.pause(30000);
+        let groupView = new GroupView();
+
+        expect(groupView.getNameText()).to.equal(group.Name);
+        expect(groupView.getDescriptionText()).to.equal(group.Description);
+
     });
 });

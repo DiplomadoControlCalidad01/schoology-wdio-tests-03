@@ -1,8 +1,8 @@
 {
   "credentials":{
     "sysadmin" : {
-      "username" : "",
-      "password" : ""
+      "username" : "aleiramsejas5@gmail.com",
+      "password" : "Liliana1234.@"
     },
     "standardUser" : {
       "username" : "",
@@ -11,7 +11,16 @@
 
   },
   "url" : "https://app.schoology.com/login",
-    "timeout" : {
-      "explicit" : 30000
+  "timeout" : {
+    "explicit" : 30000
+  },
+
+    "browserstack": {
+      "user": "",
+      "key": "",
+      "os": "Windows",
+      "os_version": "10",
+      "browser": "Chrome",
+      "browser_version": "71.0"
     }
 }
